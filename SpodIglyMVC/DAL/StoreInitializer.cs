@@ -1,4 +1,5 @@
-﻿using SpodIglyMVC.Models;
+﻿using SpodIglyMVC.Migrations;
+using SpodIglyMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,14 +7,8 @@ using System.Data.Entity.Migrations;
 
 namespace SpodIglyMVC.DAL
 {
-    public class StoreInitializer : DropCreateDatabaseAlways<StoreContext>
+    public class StoreInitializer : MigrateDatabaseToLatestVersion<StoreContext, Configuration>
     {
-        protected override void Seed(StoreContext context)
-        {
-            SeedStoreData(context);
-            base.Seed(context);
-        }
-
         public static void SeedStoreData(StoreContext context)
         {
             var genres = new List<Genre>
