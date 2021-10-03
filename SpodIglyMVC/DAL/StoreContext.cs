@@ -6,6 +6,12 @@ namespace SpodIglyMVC.DAL
     public class StoreContext : DbContext
     {
         public StoreContext() : base("StoreContext") { }
+
+        static StoreContext() 
+        {
+            Database.SetInitializer(new StoreInitializer());
+        }
+
         public DbSet<Album> Albums { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Order> Orders { get; set; }

@@ -9,7 +9,7 @@ namespace SpodIglyMVC.Models
         public string AlbumTitle { get; set; }
         public string ArtistName { get; set; }
         public DateTime DateAdded { get; set; }
-        public string CovertFileName { get; set; }
+        public string CoverFileName { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
         public bool IsBestseller { get; set; }
