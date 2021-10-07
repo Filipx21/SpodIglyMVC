@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace SpodIglyMVC.Infrastructure
 {
-    public static class UlrHelpers
+    public static class UrlHelpers
     {
         public static string GenreIconPath(this UrlHelper helper, string genreIconFilename)
         {
