@@ -1,68 +1,18 @@
-﻿@{
+﻿@model SpodIglyMVC.ViewModels.HomeViewModel
+@{
     ViewBag.Title = "SpodIgly - Sklep";
 }
 <nav class="genres-horizontal">
     <ul>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/rock.png); ">
-                Rock
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/rnb.png); ">
-                R&B
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/electro.png); ">
-                Electronic
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/metal.png); ">
-                Metal
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/pop.png); ">
-                Pop
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/classics.png); ">
-                Classical
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/jazz.png); ">
-                Jazz
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/reagge.png); ">
-                Reagge
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/other.png); ">
-                Inne
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/hiphop.png); ">
-                Hip Hop
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/alternative.png); ">
-                Alternative
-            </a>
-        </li>
-        <li>
-            <a href="" style="background-image: url(../Content/Genre-icons/promos.png); ">
-                Promocje
-            </a>
-        </li>
+        @foreach(var genre in Model.Genres)
+        {
+            <li>
+                <a href="@Url.Action("List", "Store", new { genrename = genre.Name.ToLower() })" 
+                   style="background-image: url(../Content/Genre-icons/rock.png); ">
+                    @genre.Name
+                </a>
+            </li>
+        }
     </ul>
     <a href="">
         <img id="baner-main" src="../Content/Images/baner-main.png" />
