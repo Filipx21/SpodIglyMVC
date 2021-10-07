@@ -19,7 +19,7 @@ namespace SpodIglyMVC.Infrastructure
         {
             get
             {
-                return _genreIconsFolderRelative;
+                return _photosFolderRelative;
             }
         }
     }
