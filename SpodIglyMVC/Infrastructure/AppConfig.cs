@@ -7,8 +7,10 @@ namespace SpodIglyMVC.Infrastructure
         private static string _genreIconsFolderRelative = ConfigurationManager.AppSettings["GenreIconsFolder"];
         private static string _photosFolderRelative = ConfigurationManager.AppSettings["PhotosFolder"];
 
-        public static string GenreIconsFolderRelative { 
-            get {
+        public static string GenreIconsFolderRelative 
+        { 
+            get 
+            {
                 return _genreIconsFolderRelative;
             } 
         }
