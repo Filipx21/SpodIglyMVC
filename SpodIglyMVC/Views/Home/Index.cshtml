@@ -45,47 +45,22 @@
 
 <section>
     <ul class="ThreeColumnsCoversList large-cover-list">
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="bestsellerFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/1.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="bestsellerFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/2.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
-        <li>
-            <article>
-                <a class="addtocartlink" href="aaaa">
-                    <img src="../Content/Images/cart.png" />
-                </a>
-                <a class="productdetailslink" href="asd">
-                    <div class="bestsellerFlag"></div>
-                    <img class="album-cover" src="../Content/Covers/3.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
+        @foreach (var bestseller in Model.Bestsellers)
+        {
+            <li>
+                <article>
+                    <a class="addtocartlink" href="@Url.Action("AddToCart", "Cart", new { id = bestseller.AlbumId})">
+                        <img src="../Content/Images/cart.png" />
+                    </a>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = bestseller.AlbumId})">
+                        <div class="bestsellerFlag"></div>
+                        <img class="album-cover" src="@Url.AlbumCoverPath(bestseller.CoverFileName)" />
+                        <h1>
+                            @bestseller.ArtistName - @bestseller.AlbumTitle
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
     </ul>
 </section>
