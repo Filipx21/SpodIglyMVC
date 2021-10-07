@@ -1,4 +1,6 @@
 ﻿@model SpodIglyMVC.ViewModels.HomeViewModel
+@using SpodIglyMVC.Infrastructure
+
 @{
     ViewBag.Title = "SpodIgly - Sklep";
 }
@@ -8,7 +10,7 @@
         {
             <li>
                 <a href="@Url.Action("List", "Store", new { genrename = genre.Name.ToLower() })" 
-                   style="background-image: url(../Content/Genre-icons/rock.png); ">
+                   style="background-image: url(@Url.GenreIconPath(genre.IconFilename)); ">
                     @genre.Name
                 </a>
             </li>
