@@ -1,4 +1,5 @@
 ﻿using SpodIglyMVC.DAL;
+using SpodIglyMVC.Infrastructure;
 using SpodIglyMVC.ViewModels;
 using System;
 using System.Linq;
@@ -11,7 +12,10 @@ namespace SpodIglyMVC.Controllers
         private StoreContext db = new StoreContext();
         public ActionResult Index()
         {
+            ICacheProvider cache = new DefaultCacheProvider();
+
             var genres = db.Genres;
+            
             var newArrivals = db.Albums
                 .Where(x => x.IsHidden == false)
                 .OrderByDescending(a => a.DateAdded)
