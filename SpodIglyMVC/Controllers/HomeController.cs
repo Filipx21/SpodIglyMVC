@@ -15,9 +15,18 @@ namespace SpodIglyMVC.Controllers
         public ActionResult Index()
         {
             ICacheProvider cache = new DefaultCacheProvider();
+            List<Genre> genres;
             List<Album> newArrivals;
-
-            var genres = db.Genres;
+           
+            if(cache.IsSet(Consts.GenresKey))
+            {
+                genres = cache.Get(Consts.GenresKey) as List<Genre>;
+            } 
+            else
+            {
+                genres = db.Genres.ToList();
+                cache.Set(Consts.GenresKey, genres, 30);
+            }
             if (cache.IsSet(Consts.NewArrivalsKey))
             {
                 newArrivals = cache.Get(Consts.NewArrivalsKey) as List<Album>;

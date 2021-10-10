@@ -7,7 +7,7 @@ namespace SpodIglyMVC.Infrastructure
 {
     public class Consts
     {
-        public const string NewItemsCacheKey = "NewItemsCacheKey";
+        public const string GenresKey = "GenresKey";
         public const string NewArrivalsKey = "NewArrivalsKey";
     }
 }
