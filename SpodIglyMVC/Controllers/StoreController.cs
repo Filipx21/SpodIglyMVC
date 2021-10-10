@@ -26,7 +26,7 @@ namespace SpodIglyMVC.Controllers
         {
             var genres = db.Genres.ToList();
 
-            return PartialView(genres);
+            return PartialView("_GenresMenu", genres);
         }
     }
 }
