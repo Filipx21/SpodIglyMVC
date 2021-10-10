@@ -4,6 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List</h2>
-
-@Html.Action("GenresMenu")
+<div id="productlist-content">
+    @Html.Action("GenresMenu")
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="../Content/Images/home-small.png" />
+            <a href="nav">
+                Start > Hip Hop
+            </a>
+        </div>
+        @Html.Partial("_ProductList")
+    </div>
+</div>

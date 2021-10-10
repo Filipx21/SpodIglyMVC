@@ -1,8 +1,5 @@
 ﻿using SpodIglyMVC.DAL;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SpodIglyMVC.Controllers
@@ -18,7 +15,14 @@ namespace SpodIglyMVC.Controllers
 
         public ActionResult List(string genrename)
         {
-            return View();
+            var genre = db.Genres
+                .Include("Albums")
+                .Where(g => g.Name.ToLower() == genrename.ToLower())
+                .Single();
+            var albums = genre.Albums
+                .ToList();
+
+            return View(albums);
         }
 
         [ChildActionOnly]
