@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpodIglyMVC.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace SpodIglyMVC.Controllers
 {
     public class StoreController : Controller
     {
+        private StoreContext db = new StoreContext();
 
         public ActionResult Details(int id)
         {
@@ -17,6 +19,14 @@ namespace SpodIglyMVC.Controllers
         public ActionResult List(string genrename)
         {
             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult GenresMenu()
+        {
+            var genres = db.Genres.ToList();
+
+            return PartialView(genres);
         }
     }
 }
