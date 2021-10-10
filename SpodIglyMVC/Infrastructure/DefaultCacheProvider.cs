@@ -6,7 +6,7 @@ namespace SpodIglyMVC.Infrastructure
 {
     public class DefaultCacheProvider : ICacheProvider
     {
-        private Cache Cache { get { return HttpContext.Current.Cache } }
+        private Cache Cache { get { return HttpContext.Current.Cache; } }
         public object Get(string key)
         {
             return Cache[key];
