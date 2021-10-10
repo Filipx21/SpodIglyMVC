@@ -1,10 +1,7 @@
 ﻿using MvcSiteMapProvider;
 using SpodIglyMVC.DAL;
 using SpodIglyMVC.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SpodIglyMVC.Infrastructure
 {
