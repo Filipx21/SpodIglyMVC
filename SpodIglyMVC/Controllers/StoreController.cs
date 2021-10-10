@@ -1,6 +1,7 @@
 ﻿using SpodIglyMVC.DAL;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace SpodIglyMVC.Controllers
 {
@@ -29,6 +30,7 @@ namespace SpodIglyMVC.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 80000)]
         public ActionResult GenresMenu()
         {
             var genres = db.Genres.ToList();
