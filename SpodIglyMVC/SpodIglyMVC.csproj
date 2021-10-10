@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\ProductDetailsDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
