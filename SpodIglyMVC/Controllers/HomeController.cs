@@ -24,7 +24,8 @@ namespace SpodIglyMVC.Controllers
             } 
             else
             {
-                genres = db.Genres.ToList();
+                genres = db.Genres
+                    .ToList();
                 cache.Set(Consts.GenresKey, genres, 30);
             }
             if (cache.IsSet(Consts.NewArrivalsKey))
@@ -34,10 +35,10 @@ namespace SpodIglyMVC.Controllers
             else
             {
                 newArrivals = db.Albums
-                                .Where(x => x.IsHidden == false)
-                                .OrderByDescending(a => a.DateAdded)
-                                .Take(3)
-                                .ToList();
+                    .Where(x => x.IsHidden == false)
+                    .OrderByDescending(a => a.DateAdded)
+                    .Take(3)
+                    .ToList();
                 cache.Set(Consts.NewArrivalsKey, newArrivals, 30);
             }
 
