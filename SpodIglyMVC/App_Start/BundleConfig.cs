@@ -13,7 +13,7 @@ namespace SpodIglyMVC
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryAndJqueryUi").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jqueryAndJqueryUI").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-{version}.js"));
 
