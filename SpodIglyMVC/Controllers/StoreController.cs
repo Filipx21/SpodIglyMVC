@@ -17,14 +17,22 @@ namespace SpodIglyMVC.Controllers
             return View(album);
         }
 
-        public ActionResult List(string genrename)
+        public ActionResult List(string genrename, string searchQuery = null)
         {
             var genre = db.Genres
                 .Include("Albums")
                 .Where(g => g.Name.ToLower() == genrename.ToLower())
                 .Single();
             var albums = genre.Albums
-                .ToList();
+                .Where(a => (searchQuery == null 
+                            || a.AlbumTitle.ToLower().Contains(searchQuery.ToLower()) 
+                            || a.ArtistName.ToLower().Contains(searchQuery.ToLower())) 
+                            && !a.IsHidden);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductList", albums);
+            }
 
             return View(albums);
         }
