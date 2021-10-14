@@ -38,5 +38,11 @@ namespace SpodIglyMVC.Controllers
             shoppingCartManager.AddToCart(id);
             return RedirectToAction("Index");
         }
+
+        public int GetCartItemsCount()
+        {
+            ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
+            return shoppingCartManager.GetCartItemsCount();
+        }
     }
 }
