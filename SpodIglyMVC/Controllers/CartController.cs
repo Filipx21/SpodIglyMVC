@@ -1,5 +1,6 @@
 ﻿using SpodIglyMVC.DAL;
 using SpodIglyMVC.Infrastructure;
+using SpodIglyMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
