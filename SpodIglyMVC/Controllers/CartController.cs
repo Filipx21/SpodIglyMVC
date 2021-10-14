@@ -13,7 +13,7 @@ namespace SpodIglyMVC.Controllers
     {
         private ISessionManager sessionManager { get; set; }
         private ShoppingCartManager shoppingCartManager;
-        private StoreContext db;
+        private StoreContext db = new StoreContext();
 
         public CartController()
         {
