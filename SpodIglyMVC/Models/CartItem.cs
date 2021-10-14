@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SpodIglyMVC.Models
+﻿namespace SpodIglyMVC.Models
 {
     public class CartItem
     {
-        public string Album { get; set; }
+        public Album Album { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
     }
