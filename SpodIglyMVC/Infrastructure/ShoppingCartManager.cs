@@ -1,6 +1,7 @@
 ﻿using SpodIglyMVC.DAL;
 using SpodIglyMVC.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SpodIglyMVC.Infrastructure
@@ -29,7 +30,6 @@ namespace SpodIglyMVC.Infrastructure
                 cartItem.Quantity++;
             else
             {
-                // Find album and add it to cart
                 var albumToAdd = db.Albums.Where(a => a.AlbumId == albumid).SingleOrDefault();
                 if (albumToAdd != null)
                 {
