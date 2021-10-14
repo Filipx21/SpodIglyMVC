@@ -23,7 +23,6 @@ namespace SpodIglyMVC.Controllers
 
         public ActionResult Index()
         {
-
             ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
 
             var cartItems = shoppingCartManager.GetCart();
