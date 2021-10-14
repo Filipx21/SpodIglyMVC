@@ -71,8 +71,6 @@
                 var recordToDelete = $(this).attr("data-id");
 
                 if (recordToDelete != '') {
-
-                    // Send post request with AJAX
                     $.post("/Cart/RemoveFromCart", { "albumID": recordToDelete },
                         function (response) {
                             // Success
@@ -100,7 +98,6 @@
                     return false;
                 }
             });
-
         });
 
     </script>
