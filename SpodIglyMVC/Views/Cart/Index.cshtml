@@ -1,4 +1,6 @@
-﻿
+﻿@model SpodIglyMVC.ViewModels.CartViewModel
+@using SpodIglyMVC.Infrastructure
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,20 +22,20 @@
             </div>
 
             <table id="cart-table">
-                <tr>
-                    <td><a href="title"><img src="../Content/Covers/9.png" /></a></td>
-                    <td><a href="title">Stasik - Pole samo się nie orze</a></td>
-                    <td>Ilość: 1</td>
-                    <td>500 zł</td>
-                    <td><a href="us">Usuń</a></td>
-                </tr>
-                <tr>
-                    <td><a href="title"><img src="../Content/Covers/9.png" /></a></td>
-                    <td><a href="title">Stasik - Pole samo się nie orze</a></td>
-                    <td>Ilość: 1</td>
-                    <td>500 zł</td>
-                    <td><a href="us">Usuń</a></td>
-                </tr>
+                @foreach (var cartItem in Model.CartItems)
+                {
+                    <tr id="cart-row-@cartItem.Album.AlbumId">
+                        <td>
+                            <a href="@Url.Action("Details", "Store", new { id = cartItem.Album.AlbumId })">
+                                <img src="@Url.Content("~/Content/Covers/" + cartItem.Album.CoverFileName)" />
+                            </a>
+                        </td>
+                        <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Album.AlbumId })">@cartItem.Album.AlbumTitle</a></td>
+                        <td>Ilość: <span id="cart-item-count-@cartItem.Album.AlbumId">@cartItem.Quantity</span></td>
+                        <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
+                        <td><a class="removeProduct" data-id="@cartItem.Album.AlbumId" href="#">Usuń</a></td>
+                    </tr>
+                }
             </table>
 
             <div id="total-price" style="">
