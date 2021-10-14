@@ -22,7 +22,15 @@ namespace SpodIglyMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            ShoppingCartManager shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
+
+            var cartItems = shoppingCartManager.GetCart();
+            var cartTotalPrice = shoppingCartManager.GetCartTotalPrice();
+
+            CartViewModel VM = new CartViewModel() { CartItems = cartItems, TotalPrice = cartTotalPrice };
+
+            return View(VM);
         }
 
         public ActionResult AddToCart(int id)
