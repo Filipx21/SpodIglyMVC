@@ -37,5 +37,15 @@ namespace SpodIglyMVC.Controllers
 
             return PartialView("_GenresMenu", genres);
         }
+
+        public ActionResult AlbumsSuggestions(string term)
+        {
+            var albums = db.Albums
+                .Where(a => a.AlbumTitle.ToLower().Contains(term.ToLower()) && !a.IsHidden)
+                .Take(5)
+                .Select(a => new { label = a.AlbumTitle });
+
+            return Json(albums, JsonRequestBehavior.AllowGet);
+        }
     }
 }
