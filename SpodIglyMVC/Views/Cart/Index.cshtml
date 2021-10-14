@@ -20,14 +20,13 @@
             <div class="section-header" style="margin-bottom: 0px;">
                 <h1>Twój koszyk</h1>
             </div>
-
             <table id="cart-table">
                 @foreach (var cartItem in Model.CartItems)
                 {
                     <tr id="cart-row-@cartItem.Album.AlbumId">
                         <td>
                             <a href="@Url.Action("Details", "Store", new { id = cartItem.Album.AlbumId })">
-                                <img src="@Url.Content("~/Content/Covers/" + cartItem.Album.CoverFileName)" />
+                                <img src="@Url.Content(Url.AlbumCoverPath(cartItem.Album.CoverFileName))" />
                             </a>
                         </td>
                         <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Album.AlbumId })">@cartItem.Album.AlbumTitle</a></td>
@@ -36,15 +35,23 @@
                         <td><a class="removeProduct" data-id="@cartItem.Album.AlbumId" href="#">Usuń</a></td>
                     </tr>
                 }
+                <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
+                    <td>Twój koszyk jest pusty. Może warto coś do niego dodać?</td>
+                </tr>
             </table>
 
-            <div id="total-price" style="">
-                Razem: 59 zł
+
+
+            <div id="total-price">
+                Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
             </div>
 
             <div class="section-button-container">
                 <a class="button-link" href="">Kontynuuj zakupy</a>
-                <a class="button-link" href="">Zapłać</a>
+                @if (Model.TotalPrice > 0)
+                {
+                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Checkout", "Cart")">Kupuję</a>
+                }
             </div>
 
         </section>
