@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="productlist-content">
+    @Html.Action("GenresMenu")
+
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="../Content/Images/home-small.png" />
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
+
+        <section class="content-section">
+            <div class="section-header" style="margin-bottom: 0px;">
+                <h1>Twój koszyk</h1>
+            </div>
+
+            <table id="cart-table">
+                <tr>
+                    <td><a href="title"><img src="../Content/Covers/9.png" /></a></td>
+                    <td><a href="title">Stasik - Pole samo się nie orze</a></td>
+                    <td>Ilość: 1</td>
+                    <td>500 zł</td>
+                    <td><a href="us">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td><a href="title"><img src="../Content/Covers/9.png" /></a></td>
+                    <td><a href="title">Stasik - Pole samo się nie orze</a></td>
+                    <td>Ilość: 1</td>
+                    <td>500 zł</td>
+                    <td><a href="us">Usuń</a></td>
+                </tr>
+            </table>
+
+            <div id="total-price" style="">
+                Razem: 59 zł
+            </div>
+
+            <div class="section-button-container">
+                <a class="button-link" href="">Kontynuuj zakupy</a>
+                <a class="button-link" href="">Zapłać</a>
+            </div>
+
+        </section>
+
+    </div>
+</div>
