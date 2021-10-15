@@ -1,24 +1,24 @@
-﻿@model SpodIglyMVC.ViewModels.LoginViewModel
-
+﻿@model SpodIglyMVC.ViewModels.RegisterViewModel
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
 }
 
 @section SectionTitle
 {
-    Zaloguj się
+    Rejestracja
 }
 
 <div>
 
-    @using (@Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    @using (@Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
 
         <div id="login-error">
             @Html.ValidationMessage("loginerror", "")
+            @Html.ValidationSummary()
         </div>
 
         <table id="login-table" style="margin-left: auto; margin-right: auto;">
@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(o => o.Password, "Hasło")</td>
+                <td>@Html.LabelFor(o => o.Password, "Hasło:")</td>
                 <td>
                     @Html.PasswordFor(o => o.Password)
                     <div class="login-validation-message">
@@ -42,33 +42,26 @@
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3">
-                    <div class="checkbox" style="margin-bottom: 10px;">
-                        @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
-                        @Html.LabelFor(m => m.RememberMe)
+                <td style="padding: 0px 20px 0px 0px; text-align: left;">
+                    @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
+                </td>
+                <td style="padding: 0px; text-align: left;">
+                    @Html.PasswordFor(o => o.ConfirmPassword)
+                    <div class="login-validation-message">
+                        @Html.ValidationMessageFor(o => o.ConfirmPassword)
                     </div>
-
-                    <input type="submit" value="Zaloguj" class="submitLink" style=" height: 40px;" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="text-align: right; padding-right: 20px;">
+                    <input type="submit" value="Zarejestruj" class="submitLink" style="height: 40px; text-align: right; margin: 0px; padding: 0px;" />
                 </td>
             </tr>
         </table>
+
     }
-
-    <div style="text-align: center;">
-
-        <a href="@Url.Action("Register")">Nie mam jeszcze konta</a>
-
-        <br /><br />
-
-        @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
-        {
-            @Html.AntiForgeryToken()
-
-            <button type="submit" id="FacebookLoginButton" name="provider" value="Facebook" title="Log in using your Facebook account"></button>
-
-            <button type="submit" id="GoogleLoginButton" name="provider" value="Google" title="Log in using your Google account"></button>
-        }
-    </div>
 
 </div>
 

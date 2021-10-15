@@ -5,7 +5,7 @@
 }
 
 <div id="productlist-content">
-    @Html.Action("GenresMenu")
+    @Html.Action("GenresMenu", "Store")
     <div id="productlist-rightsection">
         <div id="breadcrumb-section">
             <img src="../Content/Images/home-small.png" />
@@ -27,5 +27,5 @@
 </div>
 
 @section scripts {
-    @RenderSection("script", required: false)    
+    @RenderSection("scripts", required: false)    
 }
