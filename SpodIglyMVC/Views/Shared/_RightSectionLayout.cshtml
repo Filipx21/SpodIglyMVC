@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "_RightSectionLayout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="productlist-content">
+    @Html.Action("GenresMenu")
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="../Content/Images/home-small.png" />
+            @Html.MvcSiteMap().SiteMapPath()
+
+        </div>
+        <section>
+            <div class="content-section">
+                <div>
+                    <h1>
+                        @RenderSection("SectionTitle", required: false)
+                    </h1>
+                </div>
+            </div>
+
+            @RenderBody()
+        </section>
+    </div>
+</div>
+
+@section scripts {
+    @RenderSection("script", required: false)    
+}
