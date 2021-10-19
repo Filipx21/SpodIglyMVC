@@ -1,9 +1,10 @@
-﻿using SpodIglyMVC.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SpodIglyMVC.Models;
 using System.Data.Entity;
 
 namespace SpodIglyMVC.DAL
 {
-    public class StoreContext : DbContext
+    public class StoreContext : IdentityDbContext<ApplicationUser>
     {
         public StoreContext() : base("StoreContext") { }
 
