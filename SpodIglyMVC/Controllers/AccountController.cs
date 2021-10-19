@@ -68,7 +68,6 @@ namespace SpodIglyMVC.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
