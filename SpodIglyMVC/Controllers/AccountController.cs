@@ -90,7 +90,12 @@ namespace SpodIglyMVC.Controllers
                 AddErrors(result);
             }
             return View(model);
-            
+        }
+
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         private void AddErrors(IdentityResult result)
