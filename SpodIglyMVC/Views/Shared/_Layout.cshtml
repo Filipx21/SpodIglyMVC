@@ -17,6 +17,7 @@
                 KOSZYK (<span id="cart-header-items-count">@Html.Action("GetCartItemsCount", "Cart")</span>)
                 <span></span>
             </a>
+            @Html.Partial("_LoginPartial")
         </div>
         <a id="main-header-logo" href="@Url.Content("~/")">
             <img src="../Content/Images/spodigly-logo-main.png" class="center" />
