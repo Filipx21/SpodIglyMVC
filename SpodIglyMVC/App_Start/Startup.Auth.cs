@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 using SpodIglyMVC.DAL;
 using SpodIglyMVC.Models;
@@ -55,18 +56,18 @@ namespace SpodIglyMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //var options = new FacebookAuthenticationOptions()
-            //{
-            //    AppId = "335213909995838",
-            //    AppSecret = "80049ab5e1f27242c29fb2363c064517"
-            //};
-            //options.Scope.Add("email");
+            var options = new FacebookAuthenticationOptions()
+            {
+                AppId = "335213909995838",
+                AppSecret = "80049ab5e1f27242c29fb2363c064517"
+            };
+            options.Scope.Add("email");
 
-            //app.UseFacebookAuthentication(options);
+            app.UseFacebookAuthentication(options);
 
-            //app.UseGoogleAuthentication(
-            //    clientId: "423286183817-v47kefqspm9fme0uhrqq90k5lvrd82ib.apps.googleusercontent.com",
-            //    clientSecret: "UD5BxMUz_KrNV-lvFZHnnwCp");
+            app.UseGoogleAuthentication(
+                clientId: "423286183817-v47kefqspm9fme0uhrqq90k5lvrd82ib.apps.googleusercontent.com",
+                clientSecret: "UD5BxMUz_KrNV-lvFZHnnwCp");
         }
     }
 }
