@@ -22,7 +22,6 @@ namespace SpodIglyMVC.Controllers
     {
         StoreContext db = new StoreContext();
 
-
         public ManageController() { }
 
         public ManageController(ApplicationUserManager userManager)
