@@ -145,7 +145,50 @@ namespace SpodIglyMVC.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
+        [AllowAnonymous]
+        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
+        {
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Login");
+            }
 
+            // Sign in the user with this external login provider if the user already has a login
+            var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.Failure:
+                default:
+                    // If the user does not have an account, create account with external provider login
+                    // in reality, we might ask for providing e-mail (+ confirming it)
+                    // we also need some error checking logic (ie. verification if user doesn't already exist)
+
+                    var user = new ApplicationUser
+                    {
+                        UserName = loginInfo.Email,
+                        Email = loginInfo.Email,
+                        UserData = new UserData { Email = loginInfo.Email }
+                    };
+
+                    var registrationResult = await UserManager.CreateAsync(user);
+                    if (registrationResult.Succeeded)
+                    {
+                        registrationResult = await UserManager.AddLoginAsync(user.Id, loginInfo.Login);
+                        if (registrationResult.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToLocal(returnUrl);
+                        }
+                        else
+                            throw new Exception("External provider association error");
+                    }
+                    else
+                        throw new Exception("Registration error");
+            }
+        }
 
         private const string XsrfKey = "XsrfId";
 
