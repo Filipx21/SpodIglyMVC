@@ -56,6 +56,7 @@ namespace SpodIglyMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
+            //https://developers.facebook.com/apps
             var options = new FacebookAuthenticationOptions()
             {
                 AppId = "335213909995838",
@@ -65,6 +66,7 @@ namespace SpodIglyMVC
 
             app.UseFacebookAuthentication(options);
 
+            //https://console.cloud.google.com/project
             app.UseGoogleAuthentication(
                 clientId: "423286183817-v47kefqspm9fme0uhrqq90k5lvrd82ib.apps.googleusercontent.com",
                 clientSecret: "UD5BxMUz_KrNV-lvFZHnnwCp");
