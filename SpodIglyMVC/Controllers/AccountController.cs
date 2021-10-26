@@ -45,12 +45,15 @@ namespace SpodIglyMVC.Controllers
             private set { _signInManager = value; }
         }
 
+        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -76,12 +79,15 @@ namespace SpodIglyMVC.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -105,6 +111,8 @@ namespace SpodIglyMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
