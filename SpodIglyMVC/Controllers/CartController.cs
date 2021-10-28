@@ -1,9 +1,12 @@
-﻿using SpodIglyMVC.DAL;
+﻿using Microsoft.AspNet.Identity;
+using SpodIglyMVC.DAL;
 using SpodIglyMVC.Infrastructure;
+using SpodIglyMVC.Models;
 using SpodIglyMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,6 +67,28 @@ namespace SpodIglyMVC.Controllers
             };
 
             return Json(result);
+        }
+
+        public async Task<ActionResult> Checkout()
+        {
+            if (Request.IsAuthenticated)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+                var order = new Order
+                {
+                    FirstName = user.UserData.FirstName,
+                    LastName = user.UserData.LastName,
+                    Address = user.UserData.Address,
+                    CodeAndCity = user.UserData.CodeAndCity,
+                    Email = user.UserData.Email,
+                    PhoneNumber = user.UserData.PhoneNumber
+                };
+
+                return View(order);
+            }
+            else
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
         }
     }
 }
