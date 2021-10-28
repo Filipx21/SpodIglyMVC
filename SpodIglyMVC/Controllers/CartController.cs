@@ -123,7 +123,11 @@ namespace SpodIglyMVC.Controllers
             }
             else
                 return View(order);
+        }
 
+        public ActionResult OrderConfirmation()
+        {
+            return View();
         }
     }
 }
