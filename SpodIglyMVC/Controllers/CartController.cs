@@ -112,11 +112,18 @@ namespace SpodIglyMVC.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 var newOrder = shoppingCartManager.CreateOrder(order, userId);
+                var user = await UserManager.FindByIdAsync(userId);
 
+                TryUpdateModel(user.UserData);
+                await UserManager.UpdateAsync(user);
+
+                shoppingCartManager.EmptyCart();
+
+                return RedirectToAction("OrderConfirmation");
             }
+            else
+                return View(orderdetails);
 
-            return null;
-            
         }
     }
 }
