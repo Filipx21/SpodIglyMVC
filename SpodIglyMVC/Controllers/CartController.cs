@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using SpodIglyMVC.DAL;
 using SpodIglyMVC.Infrastructure;
 using SpodIglyMVC.Models;
