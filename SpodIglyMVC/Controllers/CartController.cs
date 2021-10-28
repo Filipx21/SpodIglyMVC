@@ -122,7 +122,7 @@ namespace SpodIglyMVC.Controllers
                 return RedirectToAction("OrderConfirmation");
             }
             else
-                return View(orderdetails);
+                return View(order);
 
         }
     }
