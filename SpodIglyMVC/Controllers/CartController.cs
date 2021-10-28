@@ -104,5 +104,19 @@ namespace SpodIglyMVC.Controllers
             else
                 return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Checkout(Order order)
+        {
+            if(ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                var newOrder = shoppingCartManager.CreateOrder(order, userId);
+
+            }
+
+            return null;
+            
+        }
     }
 }

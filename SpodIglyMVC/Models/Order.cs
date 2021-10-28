@@ -32,6 +32,8 @@ namespace SpodIglyMVC.Models
         public OrderState OrderState { get; set; }
         public decimal TotalPrice { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 
     public enum OrderState

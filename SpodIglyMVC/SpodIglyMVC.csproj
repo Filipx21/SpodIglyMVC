@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202110281741022_order.designer.cs">
       <DependentUpon>202110281741022_order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110281750114_orderUser.cs" />
+    <Compile Include="Migrations\202110281750114_orderUser.designer.cs">
+      <DependentUpon>202110281750114_orderUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -387,6 +391,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110281741022_order.resx">
       <DependentUpon>202110281741022_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110281750114_orderUser.resx">
+      <DependentUpon>202110281750114_orderUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
